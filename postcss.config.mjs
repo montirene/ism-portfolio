@@ -1,8 +1,8 @@
-// postcss.config.mjs (Correct EcmaScript Module Syntax)
-
+// postcss.config.mjs
+// This line correctly exports the configuration object
 export default {
   plugins: {
-    tailwindcss: {},
-    autoprefixer: {},
+    '@tailwindcss/postcss': {},
+    'autoprefixer': {},
   },
-};
+};8
