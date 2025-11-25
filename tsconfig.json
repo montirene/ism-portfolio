@@ -1,34 +1,40 @@
 {
+  // CRITICAL: Extends Next.js's base TypeScript settings.
+  // This ensures your configuration starts with all the necessary rules for the framework.
+  "extends": "next/tsconfig.json",
   "compilerOptions": {
-    "target": "ES2017",
-    "lib": ["dom", "dom.iterable", "esnext"],
-    "allowJs": true,
-    "skipLibCheck": true,
-    "strict": true,
-    "noEmit": true,
-    "esModuleInterop": true,
-    "module": "esnext",
-    "moduleResolution": "bundler",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "jsx": "react-jsx",
-    "incremental": true,
-    "plugins": [
-      {
-        "name": "next"
-      }
-    ],
+    // Defines the base directory for resolving module names.
+    "baseUrl": ".",
+    
+    // IMPORTANT: Defines path aliases, allowing imports like `@/components/Button`.
+    // This setting should match the paths configured in your components.json or manual setup.
     "paths": {
       "@/*": ["./*"]
-    }
+    },
+
+    // Ensures that the 'jsx' setting is correct for React 
+    "jsx": "preserve",
+    
+    // Enables stricter type checking rules recommended for modern development
+    "strict": true,
+    
+    // Tells TypeScript to generate declaration files (d.ts) for libraries
+    "declaration": false,
+    
+    // Ensures components imported in React/Next.js don't need the ".jsx" or ".tsx" extension
+    "allowJs": true
   },
+  
+  // Specifies which files TypeScript should compile.
   "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    ".next/types/**/*.ts",
-    ".next/dev/types/**/*.ts",
-    "**/*.mts"
+    "next-env.d.ts", 
+    "**/*.ts", 
+    "**/*.tsx", 
+    ".next/types/**/*.ts"
   ],
-  "exclude": ["node_modules"]
+  
+  // Specifies which files TypeScript should ignore during compilation.
+  "exclude": [
+    "node_modules"
+  ]
 }
